@@ -4,10 +4,16 @@ import Navigation from '../Navigation/Navigation';
 import { useState, useEffect } from 'react';
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (search) => {
+    setSearchQuery(search)
+    console.log(searchQuery)
+  }
  
   return (
     <div className='app'>
-      <Navigation />
+      <Navigation handleSearch={handleSearch} />
       <main className='main-section' >
         <Headline />
       </main>

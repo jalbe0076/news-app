@@ -1,7 +1,7 @@
 import './Navigation.scss';
 import Search from '../Search/Search';
 
-const Navigation = () => {
+const Navigation = ({handleSearch}) => {
   const arrowSvg = (
     <svg className='arrow-icon' stroke='black' height="24" viewBox="0 0 60 80" width="40">
       <line className="line top" x1="10" x2="40" y1="40" y2="15" strokeWidth="8" strokeLinecap="round"/>
@@ -16,7 +16,7 @@ const Navigation = () => {
         <h1 className='nav-title'>News App</h1>
         {arrowSvg}
       </div>
-      <Search />
+      <Search handleSearch={handleSearch}/>
     </header>
   )
 
