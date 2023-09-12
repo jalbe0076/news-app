@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--primary-contrast-color);
+  letter-spacing: 1px;
+}
+
+.news-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.app {
+  max-width: 1440px;
+  margin: auto auto;
+  padding: 0 2em
+}
+
+main {
+  display: flex;
+  gap: 2rem;
+}

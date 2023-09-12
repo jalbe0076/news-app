@@ -50,9 +50,21 @@ const Headline = ({search}) => {
   //   })()
   // }, [])
 
-  return (
-    <section>
+  const headline = articles.map((article) => {
+    const {title, urlToImage, description} = article;
 
+    return (
+      <article className='main-articles' >
+        <img className='article-image' src={`${urlToImage}`} />
+        <h2 className='article-title'>{title}</h2>
+        {description && <p className='article-description' >{description}</p>}
+      </article>
+    )
+  })
+
+  return (
+    <section className='news-section' >
+      {headline}
     </section>
   );
 }
