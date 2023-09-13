@@ -6,6 +6,15 @@
   letter-spacing: 1px;
 }
 
+button {
+  border: none;
+  background: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .news-section {
   display: flex;
   flex-direction: column;
@@ -20,6 +29,6 @@
 
 @media (min-width: 900px) {
   .app {
-    margin: 0 2em;
+    padding: 0 2em 2em;
   }
 }

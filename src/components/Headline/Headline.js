@@ -12,8 +12,10 @@ const Headline = ({articles, handleArticleDetails}) => {
     return (
       <article className='main-articles' key={crypto.randomUUID()} onClick={() => handleArticleDetails(article)}>
         <img className='article-image' src={`${urlToImage}`} alt=''/>
-        <h2 className='article-title'>{title}</h2>
-        {description && <p className='article-description' >{description}</p>}
+        <div className='content-container'>
+          <h2 className='article-title'>{title}</h2>
+          {description && <p className='article-description' dangerouslySetInnerHTML={{ __html: description }}></p>}
+        </div>
       </article>
     )
   })

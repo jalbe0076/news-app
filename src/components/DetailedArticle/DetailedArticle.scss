@@ -1,0 +1,14 @@
+.data-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: .9em;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .data-container {
+    flex-direction: column;
+    gap: .4em;
+  }
+}
+

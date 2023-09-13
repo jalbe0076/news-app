@@ -43,21 +43,22 @@ function App() {
   ])
   const [networkError, setNetworkError] = useState(null);
   const [viewArticle, setViewArticle] = useState(null);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   
-  // useEffect(() => {
-  //   setLoading(true);
-  //   (async () => {
-  //     try {
-  //       const data = await getNews('');
-  //       setArticles(data.articles)
-  //     } catch (error) {
-  //       setNetworkError(error.message)
-  //     } finally {
-  //       setLoading(false)
-  //     }
-  //   })()
-  // }, []);
+  useEffect(() => {
+    setLoading(true);
+    (async () => {
+      try {
+        const data = await getNews('');
+        setArticles(data.articles)
+      } catch (error) {
+        console.log(error)
+        setNetworkError(error.message)
+      } finally {
+        setLoading(false)
+      }
+    })()
+  }, []);
 
   const handleSearch = (search) => {
     setCurrentSearch(search);
@@ -70,30 +71,38 @@ function App() {
         setNetworkError(error.message);
       } finally {
         setLoading(false)
+        navigate('/')
       }
     })();
   }
-  console.log('OBJ', {})
 
   const handleArticleDetails = (article) => {
     setViewArticle(article);
-    console.log(article)
-    navigation('/detailed-article')
+    navigate('/detailed-article');
+  }
+
+  const returnHome = (article) => {
+    setViewArticle({});
+    navigate('/');
   }
  
   return (
     <div className='app'>
-      <Navigation handleSearch={handleSearch} />
+      <Navigation handleSearch={handleSearch} returnHome={returnHome} />
       <main className='main-section' >
-        <Routes>
-          <Route path='/' element={loading ? (<h2>Loading articles...</h2>)
-            : articles.length ? 
-              (<Headline articles={articles} handleArticleDetails={handleArticleDetails} /> )
-            : (<h2>No available articles {currentSearch && `for ${currentSearch}`}</h2>)
-            }
-          />
-          <Route path='/detailed-article' element={<DetailedArticle article={viewArticle} />} />
-        </Routes>
+        {!networkError ?
+          <Routes>
+            <Route path='/' element={loading ? (<h2>Loading articles...</h2>)
+              : articles.length ? 
+                (<Headline articles={articles} handleArticleDetails={handleArticleDetails} /> )
+              : (<h2>No available articles {currentSearch && `for ${currentSearch}`}</h2>)
+              }
+            />
+            <Route path='/detailed-article' element={<DetailedArticle article={viewArticle} />} />
+            <Route path='*' element={navigate('/')}/>
+          </Routes> 
+        : <h2>{networkError}</h2>
+        }
       </main>
     </div>
   )
