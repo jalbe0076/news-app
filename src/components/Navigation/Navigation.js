@@ -1,6 +1,6 @@
 import './Navigation.scss';
 import Search from '../Search/Search';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const Navigation = ({handleSearch, returnHome}) => {
   const location = useLocation()
@@ -15,8 +15,8 @@ const Navigation = ({handleSearch, returnHome}) => {
   return (
     <header>
       <div className='main-header-container' >
-        <h1 className='nav-title'>News App</h1>
-        {(location.pathname !== '/') && <button onClick={returnHome} >{arrowSvg}</button> }
+        <Link to='/' className='nav-title'><h1>News App</h1></Link>
+        {(location.pathname !== '/') && <button onClick={returnHome}>{arrowSvg}</button>}
       </div>
       <Search handleSearch={handleSearch}/>
     </header>
