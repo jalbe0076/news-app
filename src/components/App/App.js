@@ -3,6 +3,8 @@ import Headline from '../Headline/Headline';
 import Navigation from '../Navigation/Navigation';
 import { useState, useEffect } from 'react';
 import { getNews } from '../../apiCalls';
+import DetailedArticle from '../DetailedArticle/DetailedArticle';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
   const [currentSearch, setCurrentSearch] = useState('')
@@ -39,8 +41,9 @@ function App() {
       urlToImage: "https://www.si.com/.image/ar_1.91%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_1200/MjAwNzEwNjMyNDg2NDc5MjM0/usatsi_21391793-1.jpg"
     }
   ])
-  const [networkError, setNetworkError] = useState(null)
-  const [viewArticle, setViewArticle] = useState(null)
+  const [networkError, setNetworkError] = useState(null);
+  const [viewArticle, setViewArticle] = useState(null);
+  const navigation = useNavigate();
   
   // useEffect(() => {
   //   setLoading(true);
@@ -70,20 +73,27 @@ function App() {
       }
     })();
   }
+  console.log('OBJ', {})
 
   const handleArticleDetails = (article) => {
-    setViewArticle(article)
+    setViewArticle(article);
+    console.log(article)
+    navigation('/detailed-article')
   }
  
   return (
     <div className='app'>
       <Navigation handleSearch={handleSearch} />
       <main className='main-section' >
-      {loading ? (<h2>Loading articles...</h2>)
-      : articles.length ? 
-        (<Headline articles={articles} handleArticleDetails={handleArticleDetails} /> )
-      : (<h2>No available articles {currentSearch && `for ${currentSearch}`}</h2>)
-      }
+        <Routes>
+          <Route path='/' element={loading ? (<h2>Loading articles...</h2>)
+            : articles.length ? 
+              (<Headline articles={articles} handleArticleDetails={handleArticleDetails} /> )
+            : (<h2>No available articles {currentSearch && `for ${currentSearch}`}</h2>)
+            }
+          />
+          <Route path='/detailed-article' element={<DetailedArticle article={viewArticle} />} />
+        </Routes>
       </main>
     </div>
   )

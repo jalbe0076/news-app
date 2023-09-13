@@ -1,7 +1,9 @@
 import './Navigation.scss';
 import Search from '../Search/Search';
+import { useLocation } from 'react-router-dom';
 
 const Navigation = ({handleSearch}) => {
+  const location = useLocation()
   const arrowSvg = (
     <svg className='arrow-icon' stroke='black' height="24" viewBox="0 0 60 80" width="40">
       <line className="line top" x1="10" x2="40" y1="40" y2="15" strokeWidth="8" strokeLinecap="round"/>
@@ -14,7 +16,7 @@ const Navigation = ({handleSearch}) => {
     <header>
       <div className='main-header-container' >
         <h1 className='nav-title'>News App</h1>
-        {arrowSvg}
+        {(location.pathname !== '/') && arrowSvg }
       </div>
       <Search handleSearch={handleSearch}/>
     </header>
