@@ -1,10 +1,5 @@
 ## What I did:
 
-## Testing Notes/Extras: 
-(Include steps for happy path user flows for all feature work added in this change)
-
-(Include edge cases/potential sad paths to look out for)
-
 Did this break anything?
 
 - [ ]  No
@@ -20,7 +15,6 @@ Type of change
 
 Checklist:
 
-- [ ]  If this code needs to be tested, all tests are passing
 - [ ]  The code runs locally
 - [ ]  There are comments where clarification/ organization is needed
 - [ ]  The code is DRY. If it's not, I tried my best

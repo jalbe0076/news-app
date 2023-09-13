@@ -1,6 +1,5 @@
-export const getNews = async () => {
-  console.log(process.env.REACT_APP_API_KEY)
-  const response = await fetch(`https://newsapi.org/v2/top-headlines?apiKey=${process.env.REACT_APP_API_KEY}&country=us&pageSize=10`)
+export const getNews = async (search) => {
+  const response = await fetch(`https://newsapi.org/v2/top-headlines?apiKey=${process.env.REACT_APP_API_KEY}&country=us&pageSize=10&q=${search}`)
   const data = await handleErrors(response)
   return data;
 }
