@@ -40,6 +40,7 @@ function App() {
     }
   ])
   const [networkError, setNetworkError] = useState(null)
+  const [viewArticle, setViewArticle] = useState(null)
   
   // useEffect(() => {
   //   setLoading(true);
@@ -69,6 +70,10 @@ function App() {
       }
     })();
   }
+
+  const handleArticleDetails = (article) => {
+    setViewArticle(article)
+  }
  
   return (
     <div className='app'>
@@ -76,7 +81,7 @@ function App() {
       <main className='main-section' >
       {loading ? (<h2>Loading articles...</h2>)
       : articles.length ? 
-        (<Headline articles={articles} /> )
+        (<Headline articles={articles} handleArticleDetails={handleArticleDetails} /> )
       : (<h2>No available articles {currentSearch && `for ${currentSearch}`}</h2>)
       }
       </main>
