@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import './Headline.scss';
-import { useEffect, useState } from 'react';
 
 const Headline = ({articles}) => {
   if (!articles || articles.length === 0) {
@@ -8,13 +8,16 @@ const Headline = ({articles}) => {
 
   const headline = articles.map((article) => {
     const {title, urlToImage, description} = article;
+    article.id = crypto.randomUUID()
 
     return (
-      <article className='main-articles' key={crypto.randomUUID()} >
-        <img className='article-image' src={`${urlToImage}`} />
-        <h2 className='article-title'>{title}</h2>
-        {description && <p className='article-description' >{description}</p>}
-      </article>
+      <Link to={`/${article.title}`} className='main-articles' key={article.id}>
+        <img className='article-image' src={`${urlToImage}`} alt=''/>
+        <div className='content-container'>
+          <h2 className='article-title'>{title}</h2>
+          {description && <p className='article-description' dangerouslySetInnerHTML={{ __html: description }}></p>}
+        </div>
+      </Link>
     )
   })
 

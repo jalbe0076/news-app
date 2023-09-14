@@ -6,6 +6,15 @@
   letter-spacing: 1px;
 }
 
+button {
+  border: none;
+  background: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .news-section {
   display: flex;
   flex-direction: column;
@@ -18,8 +27,12 @@
   padding-bottom: 2em;
 }
 
+.error-messages {
+  padding-left: .5em;
+}
+
 @media (min-width: 900px) {
   .app {
-    margin: 0 2em;
+    padding: 0 2em 2em;
   }
 }

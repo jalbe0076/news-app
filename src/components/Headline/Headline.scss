@@ -1,6 +1,7 @@
 
 .main-articles {
   gap: 2em;
+  text-decoration: none;
 }
 
 .article-image {
@@ -9,13 +10,9 @@
 
 .article-title {
   font-size: 1.2rem;
+  padding-bottom: 1em;
 }
 
-.article-description,
-.article-title {
-  padding: .5rem;
+.content-container {
+  padding: .5em;
 }
-
-// .article-description {
-//   padding-bottom: 1.5rem;
-// }

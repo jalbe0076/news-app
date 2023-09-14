@@ -5,6 +5,10 @@
   padding: 1em .5em;
 }
 
+.nav-title {
+  text-decoration: none;
+}
+
 @media (min-width: 900px) {
   header {
     display: flex;
