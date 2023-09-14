@@ -11,7 +11,7 @@ const Headline = ({articles}) => {
     article.id = crypto.randomUUID()
 
     return (
-      <Link to={`/${article.title}`} className='main-articles' key={article.id}>
+      <Link to={`/article/${article.title}`} className='main-articles' key={article.id}>
         <img className='article-image' src={`${urlToImage}`} alt=''/>
         <div className='content-container'>
           <h2 className='article-title'>{title}</h2>

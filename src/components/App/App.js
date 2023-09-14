@@ -60,7 +60,7 @@ function App() {
               : (<h2 className='error-messages'>No available articles {currentSearch && `for ${currentSearch}`}</h2>)
               }
             />
-            <Route path={`/:newsTitle`} element={<DetailedArticle setLoading={setLoading} setNetworkError={setNetworkError} />} />
+            <Route path={`/article/:newsTitle`} element={<DetailedArticle setLoading={setLoading} setNetworkError={setNetworkError} />} />
             <Route path='*' element={<BadRoute />}/>
           </Routes> 
         : <h2 className='error-messages' >{networkError}</h2>
