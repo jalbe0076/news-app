@@ -15,6 +15,7 @@ const Headline = ({articles}) => {
         <img className='article-image' src={`${urlToImage}`} alt=''/>
         <div className='content-container'>
           <h2 className='article-title'>{title}</h2>
+          {article.publishedAt && <p className='article-date' >{`Published: ${article.publishedAt.slice(0, 10)}`}</p>}
           {description && <p className='article-description' dangerouslySetInnerHTML={{ __html: description }}></p>}
         </div>
       </Link>

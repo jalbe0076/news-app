@@ -8,7 +8,6 @@ const handleErrors = (response) => {
   if(response.ok) {
     return response.json();
   } else {
-    console.log(response)
     throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
   }
 }

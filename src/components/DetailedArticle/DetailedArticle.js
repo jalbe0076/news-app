@@ -29,8 +29,8 @@ const DetailedArticle = ({setNetworkError}) => {
       <div className='content-container'>
         <h2 className='article-title'>{article.title}</h2>
         <div className='data-container'>
-          {article.author && <p className='article-author' >{`by: ${article.author}`}</p>}
-          {article.publishedAt && <p className='article-date' >{`published: ${article.publishedAt.slice(0, 10)}`}</p>}
+          {article.author && <p className='article-author' >{`By: ${article.author}`}</p>}
+          {article.publishedAt && <p className='article-date' >{`Published: ${article.publishedAt.slice(0, 10)}`}</p>}
         </div>
         {article.content && <p className='article-content' dangerouslySetInnerHTML={{ __html: article.content}}></p>}
         <p className='more-link' >Read more <a href={`${article.url}`}  rel='noreferrer noopener' target='_blank' >here</a></p>
